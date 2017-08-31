@@ -1,0 +1,12 @@
+{
+  "name": "sha1",
+  "_release": "fcbee69dcc",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fcbee69dcc6f6e9038e7d78376ab207e0816896a"
+  },
+  "_source": "https://bitbucket.org/keesey/sha1.git",
+  "_target": "*",
+  "_originalSource": "https://bitbucket.org/keesey/sha1.git"
+}

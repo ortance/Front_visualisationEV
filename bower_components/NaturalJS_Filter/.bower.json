@@ -1,0 +1,14 @@
+{
+  "name": "NaturalJS_Filter",
+  "homepage": "https://github.com/NaturalSolutions/NaturalJS-Filter",
+  "version": "1.1.4",
+  "_release": "1.1.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.1.4",
+    "commit": "1f9d15f52a80e1de6aa8d2fab496243eb064cf28"
+  },
+  "_source": "https://github.com/NaturalSolutions/NaturalJS-Filter.git",
+  "_target": "1.1.4",
+  "_originalSource": "NaturalJS_Filter"
+}
