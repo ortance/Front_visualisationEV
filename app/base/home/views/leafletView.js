@@ -121,35 +121,40 @@ function(Marionette, config, $,  L, Draw , leafletSearch) {
 		// },
 
 		check_celery_task: function(id_task, bdd){
-			var _this = this;
-			var data = {};
-			data['id_task'] =  id_task;
-			data['table_name'] = bdd;
-			$.ajax({
-					url: 'http://127.0.0.1/api/checkCeleryTask',
-					data: JSON.stringify(data),
-					contentType: "application/json",
-					type: 'POST',
-					success: function(response) {
-						if(!response['state']){
-							setTimeout(function(){ _this.check_celery_task(id_task, bdd); }, 5000);
-						}
-						else{
-							console.log(response);
-							console.log("traitement terminé, rechargement de la carte");
-							_this.loadDataLayer(response['table_name']);
-						}
-					},
-					error: function(error) {
-						console.log(error);
-					}
-		})
+					var _this = this;
+					var data = {};
+					data['id_task'] =  id_task;
+					data['table_name'] = bdd;
+					$.ajax({
+							url: 'http://127.0.0.1/api/checkCeleryTask',
+							data: JSON.stringify(data),
+							contentType: "application/json",
+							type: 'POST',
+							success: function(response) {
+								if(!response['state']){
+									setTimeout(function(){ _this.check_celery_task(id_task, bdd); }, 5000);
+								}
+								else{
+									console.log(response);
+									console.log("traitement terminé, rechargement de la carte");
+									_this.loadDataLayer(response['table_name']);
+								}
+							},
+							error: function(error) {
+								console.log(error);
+							}
+				})
 		},
 
 		loadDataLayer: function(table_name){
 			var _this = this; // definition du contexte dans la fonction pour l'utiliation dans le call ajax
+			var dataPass = {};
+			dataPass['table_name'] = table_name;
 			$.ajax({
 				url:'http://127.0.0.1/api/ndviAuto',
+				data: JSON.stringify(dataPass),
+				contentType: "application/json",
+				type: 'POST',
 				success: function(data){
 					console.log(data);
 					console.log("les données ont été récupérées");
