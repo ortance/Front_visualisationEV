@@ -47,14 +47,19 @@ function(Marionette, config, $,  L, Draw , leafletSearch) {
 				"Streets": streets
 			};
 
+
+
+
 			// on crée la carte
-			this.mymap = L.map('testMap').setView([43.2874299332864,5.37500409548504], 4);
+			this.mymap = L.map('testMap', {zoomDelta: 1, zoomSnap: 0}).setView([43.2874299332864,5.37500409548504], 4);
 
 			// add default layers to map
 			this.mymap.addLayer(streets);
 
 			// on ajoute la couche de contrôle pour choisir différents fonds de carte
 			L.control.layers(baseLayers).addTo(this.mymap);
+
+			L.control.scale().addTo(this.mymap);
 
 		},
 
@@ -121,29 +126,29 @@ function(Marionette, config, $,  L, Draw , leafletSearch) {
 		// },
 
 		check_celery_task: function(id_task, bdd){
-					var _this = this;
-					var data = {};
-					data['id_task'] =  id_task;
-					data['table_name'] = bdd;
-					$.ajax({
-							url: 'http://127.0.0.1/api/checkCeleryTask',
-							data: JSON.stringify(data),
-							contentType: "application/json",
-							type: 'POST',
-							success: function(response) {
-								if(!response['state']){
-									setTimeout(function(){ _this.check_celery_task(id_task, bdd); }, 5000);
-								}
-								else{
-									console.log(response);
-									console.log("traitement terminé, rechargement de la carte");
-									_this.loadDataLayer(response['table_name']);
-								}
-							},
-							error: function(error) {
-								console.log(error);
-							}
-				})
+			var _this = this;
+			var data = {};
+			data['id_task'] =  id_task;
+			data['table_name'] = bdd;
+			$.ajax({
+				url: 'http://127.0.0.1/api/checkCeleryTask',
+				data: JSON.stringify(data),
+				contentType: "application/json",
+				type: 'POST',
+				success: function(response) {
+					if(!response['state']){
+						setTimeout(function(){ _this.check_celery_task(id_task, bdd); }, 5000);
+					}
+					else{
+						console.log(response);
+						console.log("traitement terminé, rechargement de la carte");
+						_this.loadDataLayer(response['table_name']);
+					}
+				},
+				error: function(error) {
+					console.log(error);
+				}
+			})
 		},
 
 		loadDataLayer: function(table_name){
