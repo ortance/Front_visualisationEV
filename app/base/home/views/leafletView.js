@@ -125,11 +125,12 @@ function(Marionette, config, $,  L, Draw , leafletSearch) {
 		// 		this.actionAllowed = allowed;
 		// },
 
-		check_celery_task: function(id_task, bdd){
+		check_celery_task: function(id_task, bdd, city){
 			var _this = this;
 			var data = {};
 			data['id_task'] =  id_task;
 			data['table_name'] = bdd;
+			data['city'] = city;
 			$.ajax({
 				url: 'http://127.0.0.1/api/checkCeleryTask',
 				data: JSON.stringify(data),
@@ -137,12 +138,12 @@ function(Marionette, config, $,  L, Draw , leafletSearch) {
 				type: 'POST',
 				success: function(response) {
 					if(!response['state']){
-						setTimeout(function(){ _this.check_celery_task(id_task, bdd); }, 5000);
+						setTimeout(function(){ _this.check_celery_task(id_task, bdd, city); }, 5000);
 					}
 					else{
 						console.log(response);
 						console.log("traitement terminé, rechargement de la carte");
-						_this.loadDataLayer(response['table_name']);
+						_this.loadDataLayer(response['table_name'], response['city']);
 					}
 				},
 				error: function(error) {
@@ -151,10 +152,11 @@ function(Marionette, config, $,  L, Draw , leafletSearch) {
 			})
 		},
 
-		loadDataLayer: function(table_name){
+		loadDataLayer: function(table_name, city){
 			var _this = this; // definition du contexte dans la fonction pour l'utiliation dans le call ajax
 			var dataPass = {};
 			dataPass['table_name'] = table_name;
+			dataPass['city'] = city;
 			$.ajax({
 				url:'http://127.0.0.1/api/ndviAuto',
 				data: JSON.stringify(dataPass),

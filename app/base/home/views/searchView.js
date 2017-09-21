@@ -44,7 +44,7 @@ function(Marionette, config, $, dateTimePicker, LeafletView) {
 					contentType: "application/json",
 					type: 'POST',
 					success: function(response) {
-						_this.map.check_celery_task(response['id_task'], response['bdd']);
+						_this.map.check_celery_task(response['id_task'], response['bdd'], response['city']);
 						console.log(response);
 					},
 					error: function(error) {
