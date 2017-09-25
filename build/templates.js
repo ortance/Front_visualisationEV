@@ -124,7 +124,7 @@ this["JST"]["app/base/home/tpl/tpl-searchNDVI.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div id="testCarte" align="center" ></div>\r\n<div id="searchNDVI" >\r\n\r\n<b> Critères de recherche : <b>\r\n  <form action="/getData" method="get" role="form">\r\n    <br> Ville : <br>\r\n    <input type="text" name="city" id="city" >\r\n    <br> <br> Date (format : aaaa/mm/jj) : <br>\r\n     du  <input type="text" name="dateBegin" id="dateBegin" > au  <input type="text" name="dateEnd" id="dateEnd" >\r\n    <br> <br> <button  value="get_started" id="mySubmit">Lancer le programme !</button>\r\n  </form>\r\n</div>\r\n';
+__p += '<div id="testCarte" align="center" ></div>\r\n<div id="searchNDVI" >\r\n\r\n<b> Critères de recherche : <b>\r\n  <form action="/getData" method="get" role="form">\r\n    <br> Ville : <br>\r\n    <input type="text" name="city" id="city" >\r\n    <br> <br> Date (format : aaaa-mm-jj) : <br>\r\n     du  <input type="text" name="dateBegin" id="dateBegin" > au  <input type="text" name="dateEnd" id="dateEnd" >\r\n    <br> <br> <button  value="get_started" id="mySubmit">Lancer le programme !</button>\r\n  </form>\r\n</div>\r\n';
 
 }
 return __p
