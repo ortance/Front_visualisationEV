@@ -47,9 +47,6 @@ function(Marionette, config, $,  L, Draw , leafletSearch) {
 				"Streets": streets
 			};
 
-
-
-
 			// on crée la carte
 			this.mymap = L.map('testMap', {zoomDelta: 1, zoomSnap: 0}).setView([43.2874299332864,5.37500409548504], 4);
 
@@ -59,7 +56,7 @@ function(Marionette, config, $,  L, Draw , leafletSearch) {
 			// on ajoute la couche de contrôle pour choisir différents fonds de carte
 			L.control.layers(baseLayers).addTo(this.mymap);
 
-			L.control.scale().addTo(this.mymap);
+			L.control.scale().addTo(this.mymap); //barre d'échelle
 
 		},
 
@@ -120,10 +117,6 @@ function(Marionette, config, $,  L, Draw , leafletSearch) {
 
 			this.mymap.addControl(controlSearch); // add it to the map
 		},
-		//
-		// setActionAllowed: function(allowed){
-		// 		this.actionAllowed = allowed;
-		// },
 
 		check_celery_task: function(id_task, bdd, city){
 			var _this = this;

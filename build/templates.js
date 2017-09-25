@@ -124,7 +124,7 @@ this["JST"]["app/base/home/tpl/tpl-searchNDVI.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div id="testCarte" align="center" ></div>\r\n<div id="searchNDVI" >\r\n\r\n<b> Critères de recherche : <b>\r\n  <form action="/getData" method="get" role="form">\r\n    <br> Ville : <br>\r\n    <input type="text" name="city" id="city" >\r\n    <br> Elévation du soleil : <br>\r\n    <input type="text" name="sunElevation" id="sunElevation" value="70">\r\n    <br> Couverture nuageuse : <br>\r\n    <input type="text" name="cloudCoverage" id="cloudCoverage" value="5">\r\n    <br> Seuil NDVI : <br>\r\n    <input type="text" name="thresholdNDVI" id="thresholdNDVI" value="0.35" >\r\n    <br> Nombre de scènes souhaitées : <br>\r\n    <input type="text" name="limitScene" id="limitScene" value="1">\r\n\r\n    <br> <br> <button  value="get_started" id="mySubmit">Lancer le programme !</button>\r\n  </form>\r\n</div>\r\n';
+__p += '<div id="testCarte" align="center" ></div>\r\n<div id="searchNDVI" >\r\n\r\n<b> Critères de recherche : <b>\r\n  <form action="/getData" method="get" role="form">\r\n    <br> Ville : <br>\r\n    <input type="text" name="city" id="city" >\r\n\r\n    <br> <br> <button  value="get_started" id="mySubmit">Lancer le programme !</button>\r\n  </form>\r\n</div>\r\n';
 
 }
 return __p
